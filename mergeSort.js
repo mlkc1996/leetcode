@@ -19,24 +19,25 @@ const mergeArray = (arr1, arr2) => {
         }
     }
 
-    if (left < arr1.length) {
-        rtn.push(...arr1.slice(left, arr1.length));
+    while (left < arr1.length) {
+        rtn.push(arr1[left++]);
     }
 
-    if (right < arr2.length) {
-        rtn.push(...arr2.slice(right, arr2.length));
+    while (right < arr2.length) {
+        rtn.push(arr2[right++]);
     }
 
     return rtn;
 };
 
 const mergeSort = (arr) => {
+    if (arr.length <= 1) {
+        return arr;
+    }
     const half = Math.floor(arr.length / 2);
-    const arr1 = arr.slice(0, half);
-    const arr2 = arr.slice(half);
-    const rtn_1 = arr1.length <= 1 ? arr1 : mergeSort(arr1);
-    const rtn_2 = arr2.length <= 1 ? arr2 : mergeSort(arr2);
-    return mergeArray(rtn_1, rtn_2);
+    const arr1 = mergeSort(arr.slice(0, half));
+    const arr2 = mergeSort(arr.slice(half));
+    return mergeArray(arr1, arr2);
 };
 
 const getRandomNumbers = (n) => {
@@ -48,3 +49,5 @@ const getRandomNumbers = (n) => {
 };
 
 const arr = getRandomNumbers(100);
+
+console.log(mergeSort(arr));
