@@ -5,7 +5,7 @@
 var countBits = function (n) {
     const rtn = [];
     let last;
-    for (let loop = 0; loop < n; loop++) {
+    for (let loop = 0; loop <= n; loop++) {
         let count = 1;
         if (loop === 0) {
             count = 0;
