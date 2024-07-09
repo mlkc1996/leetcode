@@ -30,3 +30,16 @@ var longestConsecutive = function(nums) {
 
     return count;
 };
+
+const a = {
+    1: "",
+    2:"",
+    3:"",
+    4:""
+}
+
+for(let key in a) {
+    delete a[+key];
+    delete a[+key + 2];
+    console.log("hihi")
+}
